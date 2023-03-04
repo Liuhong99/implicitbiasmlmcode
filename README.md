@@ -78,9 +78,11 @@ deepspeed --master_port 32056 run_pretraining.py \
   --lr 5e-4 \
   --train_batch_size 4096 \
   --train_micro_batch_size_per_gpu 1024 \
-  --lr_schedule time \
+  --lr_schedule step \
+  --num_warmup_steps 3333 \
+  --warmup_proportion 0.13333 \
+  --max_steps 25000 \
   --curve linear \
-  --warmup_proportion 0.20 \
   --gradient_clipping 0.0 \
   --optimizer_type adamw \
   --weight_decay 0.01 \
